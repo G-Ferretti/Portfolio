@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="container">
+      <ion-title>
+        <strong>GF</strong>
+      </ion-title>
+
+      <ion-segment (ionChange)="changePage($event)">
+        
+        <ion-segment-button value="home">
+          <ion-label>
+            Home
+          </ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="about">
+          <ion-label>
+            About
+          </ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="project">
+          <ion-label>
+            Project
+          </ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="contacts">
+          <ion-label>
+            Contacts
+          </ion-label>
+        </ion-segment-button>
+
+      </ion-segment>
+
+    </div>
+  </ion-toolbar>
+</ion-header>
