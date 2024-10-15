@@ -1,3 +1,63 @@
-<p>
-  contacts works!
-</p>
+<ngx-particles 
+    [id]="id" 
+    [options]="particlesOptions" 
+    class="particles">
+</ngx-particles>
+
+<div class="content">
+    
+    <ion-card class="form-card">
+
+      <ion-card-header>
+          <ion-card-title><strong>Let's get in touch</strong></ion-card-title>
+      </ion-card-header>
+      
+      <form [formGroup]="formGroup" class="form">
+        
+        <p-floatLabel>
+          <input pInputText id="email" formControlName="email"/>
+          <label for="email">Email</label>
+        </p-floatLabel>
+
+        <p-floatLabel>
+          <input pInputText id="subject" formControlName="subject"/>
+          <label for="subject">Subject</label>
+        </p-floatLabel>
+
+        <p-floatLabel>
+          <textarea pInputTextarea id="content" rows="5" cols="30"  formControlName="content"></textarea>
+          <label for="content">Content</label>
+        </p-floatLabel>
+
+        <ion-button class="w-50">
+          Send
+        </ion-button>
+
+      </form>
+    </ion-card>
+
+</div>
+
+
+<!--p-card styleClass=" bg-light-secondary" class="ion-padding"></!--p-card>
+      <ng-template pTemplate="header">
+        <h4>
+          Login
+        </h4>
+      </ng-template>
+      
+      <form >
+        <ion-input type="email" label="Email" label-placement="floating" fill="outline" placeholder="Enter Email" formControlName="userMail" errorText="Invalid Email" />
+
+        <ion-input label="Password" label-placement="floating" fill="outline" placeholder="Enter Password" formControlName="userPassword" errorText="Invalid Password" />
+      </form>      
+
+      <ng-template pTemplate="footer">
+        <div>
+          <ion-button class="w-100" color="light">
+              Login
+          </ion-button>
+        </div>
+
+      </ng-template>
+    </p-card>-->

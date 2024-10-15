@@ -1,3 +1,39 @@
-<p>
-  project works!
-</p>
+<ngx-particles 
+    [id]="id" 
+    [options]="particlesOptions" 
+    class="particles">
+</ngx-particles>
+
+<div class="content-holder">
+
+  <div class="intro-holder">
+    <ion-card-header>
+      <ion-card-title><strong>MY EVER-GROWING LIST OF PROJECTS</strong></ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      This section is meant to showcase each and every personal project I'll be working on in the future.
+      Each work being progressively better and better in quality, as I become a skilled dev. As such this section 
+      will not only be an archive of my every project but also a testament of my skill and progress as a Full-Stack dev.
+    </ion-card-content>
+  </div>
+
+  <div class="project-list">
+    @for(project of projects; track project){
+      
+      <ion-card class="project-holder">
+        
+        <div class="content-holder">
+            <ion-card-header>
+              <ion-card-title>{{project[0]}}</ion-card-title>
+            </ion-card-header>
+        
+            <ion-card-content>{{project[1]}}</ion-card-content>
+        </div>
+
+        <ion-img [src]="project[2]"></ion-img>
+
+      </ion-card>
+    }
+  </div>
+</div>

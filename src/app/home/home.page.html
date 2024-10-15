@@ -1,1 +1,33 @@
-<p>home page works</p>
+<app-particles></app-particles>
+<div class="container-fluid d-flex flex-column h-100">
+  
+  <div class="content row d-flex flex-grow-1 flex-column justify-content-center align-items-center">
+    <div class="header row w-100">
+      <h1 #header class="display-3 col-12 text-center">{{animatedText}}</h1>
+    </div>
+
+    <div class="row w-100 d-flex align-items-center justify-content-center">
+      <div class="curriculum col-6 text-center text-wrap">
+        <ion-button>
+          <a href="" download><strong>Download CV</strong></a>
+        </ion-button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="socials row">
+    <div class="col-6 col-sm-4 col-md-2 d-flex flex-grow-3 justify-content-start align-items-end">
+      <div class="social-list w-100 d-flex justify-content-center">
+          @for (social of socials; track social) {
+            <div class="social-container w-25 mx-2">
+              <a [href]="social[0]" target="_blank" >
+                <ion-img [src]="social[1]" [alt]="social[2]" class="img-responsive"></ion-img>
+              </a>
+            </div>
+          }
+      </div>
+    </div>
+  </div>
+
+</div>

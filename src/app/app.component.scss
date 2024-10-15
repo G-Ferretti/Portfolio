@@ -1,15 +1,20 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+
+:root {
+  --ion-safe-area-top: env(safe-area-inset-top, 0px);
 }
 
-.header{
-    position: sticky;
-    top: 0px;
-    width: 100%;
+ion-app {
+  padding-top: var(--ion-safe-area-top);
 }
 
-.content{
-    flex-grow: 1;
+app-header {
+  top: var(--ion-safe-area-top) !important;
+}
+
+ion-content {
+  --padding-top: var(--ion-safe-area-top);
+}
+
+ion-content::part(scroll) {
+  padding-top: var(--header-height, 70px);
 }

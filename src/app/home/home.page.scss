@@ -1,0 +1,56 @@
+@import '/src/assets/animista.scss';
+
+app-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.header{
+  font-family: teko;
+}
+
+.social-list{
+  margin-bottom: 1dvh;
+}
+
+ion-button{
+  --background: linear-gradient(to right, red, purple);
+  a{
+    color: black;
+  }
+}
+
+.social-container{
+
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    padding: 1%;
+    border-radius: 5px;
+}
+
+.social-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, red, purple); /* Change to your desired gradient */
+    mix-blend-mode: multiply; /* Blend mode to achieve the gradient color */
+    opacity: 0.8; 
+    pointer-events: none;
+}
+
+.social-container:hover{
+  @include jello
+}
+
+*{
+  box-sizing: border-box;
+}

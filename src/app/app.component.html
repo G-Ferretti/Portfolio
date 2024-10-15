@@ -1,6 +1,6 @@
-<ion-app class="container">
-  <app-header class="header"></app-header>
-  <ion-content>
-    <ion-router-outlet class="content"></ion-router-outlet>
+<ion-app class="d-flex flex-column vh-100">
+  <app-header #header class="fixed-top"></app-header>
+  <ion-content class="flex-grow-1">
+    <router-outlet></router-outlet>
   </ion-content>
 </ion-app>

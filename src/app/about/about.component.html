@@ -1,3 +1,42 @@
-<p>
-  about works!
-</p>
+<ngx-particles 
+    [id]="id" 
+    [options]="particlesOptions" 
+    class="particles">
+</ngx-particles>
+
+<div class="container-fluid h-100">
+    <div class="row h-100 d-flex align-items-lg-center justify-content-evenly">
+      
+      <div class="profile col-lg-7">
+        <div class="row">
+            <img class="profile-picture img-responsive col-lg-5" [@profilePicture] src="https://picsum.photos/300"/>
+            <div class="profile-content col-lg-6 d-flex flex-column align-items-start justify-content-center" [@profileContent]>        
+              <ion-card-header>
+                <ion-card-title>Hi I'm Gabriele!</ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="ion-text-wrap">
+                I am a passionate computer science undergraduate from Italy with a strong enthusiasm for 3D printing. As a future full-stack developer, I am dedicated to mastering both front-end and back-end to bring users a seamless and creative application. I love coding and love new challenges every day, continuously learning expanding my knowledge of this wonderful world.
+              </ion-card-content>
+            </div>
+
+        </div>
+      </div>
+
+      <div class="tech col-12 col-lg-3" [@techGrid]>
+        @for(row of techGrid; track row) {
+          <div class="row row-cols-lg-3 g-4 justify-content-center">
+            @for (tech of row; track $index) {
+            <div class="col mb-3">
+              <ion-card class="h-100 w-100 d-flex flex-column justify-content-center align-items-center text-center p-3">
+                <img [src]="techIcons[tech]" [alt]="tech" class="img-fluid w-75 h-auto">
+                <strong class="mt-auto">{{tech}}</strong>
+              </ion-card>
+            </div>
+            }
+          </div>
+        }
+      </div>
+    
+    </div>
+
+</div>
