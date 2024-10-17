@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { IonicModule} from '@ionic/angular'
 import { NgParticlesService } from '@tsparticles/angular';
 import { loadSlim } from '@tsparticles/slim';
 import { particlesAbout } from 'src/particles';
 import { NgxParticlesModule } from "@tsparticles/angular";
+import { DeviceService } from '../service/device.service';
 
 @Component({
   selector: 'app-project',
@@ -12,19 +13,25 @@ import { NgxParticlesModule } from "@tsparticles/angular";
   standalone: true,
   imports: [IonicModule, NgxParticlesModule]
 })
-export class ProjectComponent implements AfterViewInit{
+export class ProjectComponent implements AfterContentInit{
       
-    constructor(private readonly ngParticlesService: NgParticlesService) {}
+    constructor(
+      private readonly ngParticlesService: NgParticlesService,
+      private deviceService: DeviceService) {}
 
     id= "tsparticles"
     particlesOptions = particlesAbout
+    isMobile = false
 
-    ngAfterViewInit(): void {
+    ngAfterContentInit(): void {
         this.ngParticlesService.init(async (engine) => {
             await loadSlim(engine);
         });
-    }
 
+        this.deviceService.detectMobile().subscribe(result => {
+          this.isMobile = result.matches
+        })
+    }
 
   projects: [string, string, string][] = [
     [ 'Whatsapp mock (WIP)',

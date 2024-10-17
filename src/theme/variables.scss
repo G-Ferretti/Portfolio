@@ -1,2 +1,6 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+@mixin text-gradient {
+        background: linear-gradient(to right, red, purple);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+}

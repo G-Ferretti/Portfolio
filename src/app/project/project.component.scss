@@ -1,42 +1,19 @@
-.content-holder{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
+@import 'src/theme/variables.scss';
 
-.intro-holder{
-    align-self: center;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    
-    max-width: 50%;
+#main-heading{
+    @include text-gradient;
 
-
-    ion-card-header{
-        background: linear-gradient(to right, red, purple);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-
-        ion-card-title{
-            font-size: 25pt;
-        }
-
+    strong{
+        border-bottom: 5px solid;
+        border-image: linear-gradient(to right, red, purple)1;
     }
 }
 
-.project-list{
+#heading-desc{
+    font-size: 1em;
+}
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    > :first-child{
-        margin-top: calc((100% * 0.25 - 270px)/2) !important;
-    }
+.list{
 
     > :nth-child(even){
         
@@ -49,45 +26,20 @@
         flex-direction: row-reverse;
     }
 
+}
 
-    .project-holder{
+.content{
 
-        max-width: 60%;
-        padding: 30px;
-        margin: 30px 0px 30px 0px;
-        align-items: center;
+    ion-card-content{
+        border-bottom: 5px solid;
+        border-image: linear-gradient(to right, red, purple) 1;
+    }
 
-        .content-holder{
+    ion-card-header{
+        @include text-gradient;
 
-            max-width: 55%;            
-            margin: 30px;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: baseline;
-            align-items: center;
-
-            ion-card-content{
-            
-                border-bottom: 5px solid;
-                border-image: linear-gradient(to right, red, purple) 1;
-            }
-
-            ion-card-header{
-                background: linear-gradient(to right, red, purple);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-
-                ion-card-title{
-                    font-size: 25pt;
-                }
-            }
-        }
-
-        ion-imng{
-            padding: 50px;
-            max-width: 480px;
-            max-height: 270px;
+        ion-card-title{
+            font-size: 25pt;
         }
     }
 }
@@ -99,4 +51,10 @@
     width: 100vw;
     height: 100vh;
     z-index: -1;
+}
+
+ion-img::part(image){
+    
+        border-radius: 2%;
+    
 }

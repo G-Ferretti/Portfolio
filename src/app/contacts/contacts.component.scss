@@ -1,50 +1,24 @@
-.content{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center
-}
+
 
 .form-card{
-    max-width: 50%;
-    max-height: 50%;
-    padding: 40px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
     p-floatLabel{
         margin: 15px;
     }
 
+    ion-button{
+        margin: 10px;
+    }
 
     ion-card-header{
         background: linear-gradient(to right, red, purple) ;
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
-    ion-card-title{
-        font-size: 22pt; 
-        text-align: center;
-    } 
-
     ion-button{
         --background: linear-gradient(to right, red, purple);
-        align-self: end;
-        margin: 15px;
-    }
-
-    .form{
-        display: flex;
-        flex-direction: column;
-
-        input{
-            width: 100%;
-        }
     }
 }
 

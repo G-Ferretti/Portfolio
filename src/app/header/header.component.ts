@@ -1,13 +1,12 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
-import { AfterContentInit, AfterViewInit, Component, NgModule, OnInit } from '@angular/core';
+import { AfterContentInit, Component, NgModule,} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { DropdownModule } from 'primeng/dropdown';
-import { Sidebar, SidebarModule } from 'primeng/sidebar';
+import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button'; 
-
+import { DeviceService } from '../service/device.service';
 
 
 @Component({
@@ -20,7 +19,7 @@ import { ButtonModule } from 'primeng/button';
 export class HeaderComponent implements AfterContentInit{
   constructor(
     private router: Router, 
-    private breakpointObserver: BreakpointObserver
+    private deviceService: DeviceService
   ) {}
 
   routes: string[] =[
@@ -40,8 +39,8 @@ export class HeaderComponent implements AfterContentInit{
   selectedLanguage: any = this.languages[0];
   selectedPage: String = 'home'
 
-  ngAfterContentInit(): void {
-    this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Tablet]).subscribe(result => {
+  async ngAfterContentInit() {
+    this.deviceService.detectMobile().subscribe(result => {
       this.isMobile = result.matches
     })
   }
@@ -52,7 +51,6 @@ export class HeaderComponent implements AfterContentInit{
 
   changePageSidebar(route: string){
     this.router.navigate([route])
-    
   }
 
   changePageSegment(event: CustomEvent): void{

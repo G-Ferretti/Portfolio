@@ -55,6 +55,7 @@ ion-card{
 
     background: linear-gradient(to right, red, purple);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0;
     white-space: nowrap;

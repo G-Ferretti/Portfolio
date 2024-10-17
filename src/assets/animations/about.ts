@@ -1,30 +1,26 @@
-import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
+import { animate, query, stagger, style, transition, trigger, state } from '@angular/animations';
 
 export const AboutAnimations = [
     trigger('profilePicture',[
-        transition(':enter', [
-            query(':enter', [
-                style({opacity: 0}),
-                animate('0.1s', style({opacity: 1}))
-            ], {optional: true})
-        ])
+        state('hidden', style({opacity: 0})),
+        state('displayed', style({opacity: 1})),
+        transition('hidden => displayed', [animate(0.3)])
     ]),
     trigger('profileContent',[
-        transition(':enter', [
-            query(':enter', [
-                style({opacity: 0}),
-                animate('0.1s', style({opacity: 1}))
-            ],{optional: true})
-        ]), 
+        state('hidden', style({opacity: 0})),
+        state('displayed', style({opacity: 1})),
+        transition('hidden => displayed', [animate(0.3)])
     ]),
     trigger('techGrid',[
-        transition(':enter', [
-            query(".grid-row > ion-card", [
-                style({opacity: 0}),
-                stagger(500, [
-                    animate('0.1s 0.5s', style({opacity: 1}))
-                ]
-            )], {optional: true}
-        )])
+        state('hidden', style({opacity: 0})),
+        state('displayed', style({opacity: 1})),
+        transition('hidden => displayed', [
+            animate(0.3),
+            query('.item', [
+                stagger(0.2, [
+                    animate(0.3, style({opacity:1}))
+                ])
+            ], {optional: true})
+        ])
     ])
 ]

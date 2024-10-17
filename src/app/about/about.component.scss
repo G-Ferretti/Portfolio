@@ -6,50 +6,45 @@
     padding: 10px;
 
     .profile-picture{
-        @include vertical-center;
-        margin-right: 20px;
-        margin-left: 20px;
-        padding: 0;
         clip-path: circle(50% at 50% 50%);
-    }
-
-    .profile-content{
-        @include horizontal-left;
-    }
-
-    ion-card-content{
-                border-bottom: 5px solid;
-        border-image: linear-gradient(to right, red, purple) 1;
+        padding: 0px;
     }
 
     ion-card-header{
         background: linear-gradient(to right, red, purple) ;
         -webkit-background-clip: text;
         background-clip: text;
-
         -webkit-text-fill-color: transparent;
     }
 
     ion-card-title{
-        font-size: 22pt; 
+        font-size: 2em; 
     }
 
     ion-card-content{
-        font-size: 12pt;
+        font-size: 1em;
     }
 }
 
 .tech{
 
 
+    #tech-header{
+        background: linear-gradient(to right, red, purple) ;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
     ion-card{
-        border-radius: 15px;
+
         border: 5px solid;
-        border-image: linear-gradient(to right, red, purple) 1;
-}
-    strong{
-        font-family: teko;
-        font-size: 1.4em;
+        border-image: linear-gradient(to right,red,purple)1;
+
+        strong{
+            font-family: teko;
+            font-size: 1.4em;
+        }
     }
 }
 
@@ -60,6 +55,25 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1;
+    z-index: -2;
 }
 
+
+ @media (orientation: portrait) {
+    .full-height-portrait {
+      height: 100vh; /* Full viewport height */
+    }
+  }
+
+
+.vertical{
+    @include vertical-center;
+}
+
+.horizontal{
+    @include horizontal-left;
+}
+
+.jello{
+    @include jello;
+}

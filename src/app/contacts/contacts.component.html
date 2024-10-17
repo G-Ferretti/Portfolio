@@ -4,60 +4,41 @@
     class="particles">
 </ngx-particles>
 
-<div class="content">
-    
-    <ion-card class="form-card">
-
-      <ion-card-header>
-          <ion-card-title><strong>Let's get in touch</strong></ion-card-title>
-      </ion-card-header>
+<div class="container-fluid h-100">
+    <div class="row h-100 d-flex align-items-center justify-content-center">
+      <div class="form-card col-12 col-sm-8 col-md-4 col-lg-3 col-xl-2 d-flex flex-column align-items-center justify-content-center">
       
-      <form [formGroup]="formGroup" class="form">
+      <div class="row col-12">
+        <ion-card-header>
+          <ion-card-title class="h1 text-center"><strong>Let's get in touch</strong></ion-card-title>
+        </ion-card-header>
+      </div>
+  
+      <form [formGroup]="formGroup" class="form d-flex flex-column">
         
-        <p-floatLabel>
-          <input pInputText id="email" formControlName="email"/>
-          <label for="email">Email</label>
-        </p-floatLabel>
+        <div class="row col-12">
+          <p-floatLabel>
+            <input class="w-100" pInputText id="email" formControlName="email"/>
+            <label for="email">Email</label>
+          </p-floatLabel>
 
-        <p-floatLabel>
-          <input pInputText id="subject" formControlName="subject"/>
-          <label for="subject">Subject</label>
-        </p-floatLabel>
+          <p-floatLabel>
+            <input class="w-100" pInputText id="subject" formControlName="subject"/>
+            <label for="subject">Subject</label>
+          </p-floatLabel>
 
-        <p-floatLabel>
-          <textarea pInputTextarea id="content" rows="5" cols="30"  formControlName="content"></textarea>
-          <label for="content">Content</label>
-        </p-floatLabel>
+          <p-floatLabel>
+            <textarea class="w-100" pInputTextarea id="content" rows="5" cols="30"  formControlName="content"></textarea>
+            <label for="content">Content</label>
+          </p-floatLabel>
+        </div>  
+    
 
-        <ion-button class="w-50">
+        <ion-button class="w-50 align-self-end">
           Send
         </ion-button>
 
-      </form>
-    </ion-card>
-
+        </form>
+      </div>
+    </div>
 </div>
-
-
-<!--p-card styleClass=" bg-light-secondary" class="ion-padding"></!--p-card>
-      <ng-template pTemplate="header">
-        <h4>
-          Login
-        </h4>
-      </ng-template>
-      
-      <form >
-        <ion-input type="email" label="Email" label-placement="floating" fill="outline" placeholder="Enter Email" formControlName="userMail" errorText="Invalid Email" />
-
-        <ion-input label="Password" label-placement="floating" fill="outline" placeholder="Enter Password" formControlName="userPassword" errorText="Invalid Password" />
-      </form>      
-
-      <ng-template pTemplate="footer">
-        <div>
-          <ion-button class="w-100" color="light">
-              Login
-          </ion-button>
-        </div>
-
-      </ng-template>
-    </p-card>-->
