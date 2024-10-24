@@ -1,8 +1,10 @@
-import { Component, AfterViewInit,ViewChild, ElementRef, OnDestroy, HostListener } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { ParticlesComponent } from '../particles/particles.component';
 import { IonicModule } from '@ionic/angular';
-
-
+import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
+import { TextAnimationService } from '../service/textAnimation.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -10,16 +12,41 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [ParticlesComponent, IonicModule],
+  imports: [ParticlesComponent, IonicModule, CommonModule, TranslateModule],
 })
 
-export class HomePage implements AfterViewInit{
+export class HomePage implements AfterViewInit, OnChanges , OnDestroy{
 
-  @ViewChild('header') header!: ElementRef
-  
+  constructor(
+    private translate: TranslateService,
+    private textAnimation: TextAnimationService
+    ){}
+
+  @Input() trigger!: boolean
+
+  animatedStatic: string = ''
+  animatedCycling: string = ''
+
+  message: string = "Hello I'm Gabriele"
+  cyclingMessages: string[] = [
+    'Front-end developer', 'Back-end developer', 'Music enthusiast'
+  ]
+
+  staticAnimationSub!: Subscription
+  cyclingAnimationSub!: Subscription
+
+  isAnimating: boolean = false
+
+  isDownloadVisible: boolean = false
+  isButtonVisibile = new Array(2).fill(false)
   
   socials: [string, string, string][] = [
-    [ 'https://github.com/G-Ferretti',
+
+      //page url
+      //icon url
+      //alt text
+
+    [ 'https://github.com/G-Ferretti', 
       'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
       'GitHub'
     ],
@@ -29,38 +56,53 @@ export class HomePage implements AfterViewInit{
     ]
   ]
 
-  animatedText: String = ''
-  message: String= "Welcome to the Home Page"
-
-  ngAfterViewInit(): void {
-    const headerElement = this.header.nativeElement
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting){
-          this.textAnimation(0)
-          observer.unobserve(headerElement)
-          observer.disconnect
-        }
-      })
+  ngAfterViewInit(){
+    
+    this.animateText(this.message, this.cyclingMessages)
+    
+    this.staticAnimationSub = this.textAnimation.getAnimatedStaticMessage().subscribe(event => {
+      this.animatedStatic = event
     })
-    observer.observe(headerElement)
+
+    this.cyclingAnimationSub = this.textAnimation.getAnimatedCyclingMessage().subscribe(event => {
+      this.animatedCycling = event
+    })
   }
 
-  textAnimation(index: number){
-
-    this.animatedText = this.message.slice(0, index) + '|'
-
-    if(index < this.message.length){
-      setTimeout(() => {
-        this.animatedText = this.message.slice(0, index+1)+ '|'
-
-        this.textAnimation(index+1)
-      }, 200)
-    } else {
-      setTimeout(() => {
-        this.animatedText = this.animatedText.slice(0, -1)
-      }, 500)
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['trigger']){
+      const isVisible = changes['trigger'].currentValue
+      if (isVisible && !this.isAnimating){
+        this.isAnimating = true
+        this.animateContent()
+      }
     }
+  }
+
+  ngOnDestroy(): void {
+    this.staticAnimationSub.unsubscribe()
+    this.cyclingAnimationSub.unsubscribe()
+  }
+
+  animateText(staticMsg: string, cyclingMsg: string[]){
+    this.textAnimation.startStaticAnimation(staticMsg)
+    
+    setTimeout(()=> {
+      this.textAnimation.startCyclingAnimation(cyclingMsg)
+    }, 4500)
+  }
+
+  animateContent(){
+    setTimeout(() => {
+      this.isDownloadVisible = true
+    }, 500)
+
+    setTimeout(() => {
+      this.isButtonVisibile.forEach((_, index) => {
+        setTimeout(() => {
+          this.isButtonVisibile[index] = true
+        },500 * index)
+      })
+    },800)
   }
 }

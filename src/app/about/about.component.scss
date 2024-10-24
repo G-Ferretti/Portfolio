@@ -1,6 +1,5 @@
 @import '/src/assets/animista.scss';
 
-
 .profile{
     
     padding: 10px;
@@ -27,7 +26,6 @@
 }
 
 .tech{
-
 
     #tech-header{
         background: linear-gradient(to right, red, purple) ;
@@ -58,14 +56,6 @@
     z-index: -2;
 }
 
-
- @media (orientation: portrait) {
-    .full-height-portrait {
-      height: 100vh; /* Full viewport height */
-    }
-  }
-
-
 .vertical{
     @include vertical-center;
 }
@@ -76,4 +66,14 @@
 
 .jello{
     @include jello;
+}
+
+.hidden{
+    opacity: 0;
+}
+
+@media (orientation: portrait){
+    .portrait{
+        height: 100vh;
+    }
 }

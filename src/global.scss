@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Teko');
-@import '/src/assets/fonts/roboto.scss';
+
 
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
@@ -33,5 +33,12 @@
 :root{
     a{
         text-decoration: none;
+    }
+
+    --ion-toolbar-segment-background-checked: rgba(255, 0, 0, 0.07);
+    --ion-toolbar-segment-indicator-color: linear-gradient(to right, red, purple);
+
+    ion-segment-button:hover {
+    --background: rgba(255, 0, 0, 0.07);
     }
 }

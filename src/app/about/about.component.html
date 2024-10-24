@@ -4,27 +4,32 @@
     class="particles">
 </ngx-particles>
 
-<div class="container-fluid h-100">
+<div class="about container-fluid">
     <div class="holder row h-100 d-flex align-items-center justify-content-evenly">
       
-      <div class="profile col-12 col-md-6 col-lg-8 full-height-portrait d-flex align-items-center justify-content-center">
+      <div class="profile portrait col-12 col-md-6 col-lg-8 d-flex align-items-center justify-content-center my-5">
         <div class="row d-flex align-items-center justify-content-center">
 
-            <img class="profile-picture col-6 col-md-6 col-lg-4 h-50 img-responsive" src="https://picsum.photos/300"/>
-            <div class="profile-content col-12 col-md-12 col-lg-5 d-flex flex-column align-items-center align-items-lg-start justify-content-center">        
+            <img [ngClass]="pictureVisibile ? 'vertical' : 'hidden'" 
+                  class="profile-picture col-6 col-lg-4 img-responsive" src="https://picsum.photos/300"/>
+            <div [ngClass]="textVisible ? 'horizontal' : 'hidden'" 
+                  class="profile-content col-12 col-lg-5 d-flex flex-column align-items-center align-items-lg-start justify-content-center">        
               <ion-card-header>
-                <ion-card-title>Hi I'm Gabriele!</ion-card-title>
+                <ion-card-title>{{'ABOUT.TITLE' | translate}}</ion-card-title>
               </ion-card-header>
     
               <ion-card-content class="ion-text-wrap text-center text-lg-start">
-                I am a passionate computer science undergraduate from Italy with a strong enthusiasm for 3D printing. As a future full-stack developer, I am dedicated to mastering both front-end and back-end to bring users a seamless and creative application. I love coding and love new challenges every day, continuously learning expanding my knowledge of this wonderful world.
+              {{'ABOUT.PARAGRAPH1' | translate}}
+              {{'ABOUT.PARAGRAPH2' | translate}}
+              {{'ABOUT.PARAGRAPH3' | translate}}
+              {{'ABOUT.PARAGRAPH4' | translate}}
               </ion-card-content>
             </div>
 
         </div>
       </div>
 
-      <div class="tech col-12 col-md-6 col-lg-4 d-flex flex-column justify-content-center">
+      <div class="tech col-12 col-md-6 col-lg-4 d-flex flex-column justify-content-center mt-5">
         <div class="col-12 d-flex justify-content-center d-sm-none">
           <h1 class="display-3"><strong id="tech-header">My skills</strong></h1>
         </div>
@@ -32,7 +37,8 @@
             <div class="row row-cols-3 d-flex align-items-center justify-content-center">
               @for (tech of row; track $index) {
                 <div class="col">
-                    <ion-card class="item m-3 d-flex flex-column align-items-center justify-content-center p-3">
+                    <ion-card [ngClass]="isGridVisible[getFlattenedIndex(techGrid.indexOf(row), row.indexOf(tech))] ? 'jello' : 'hidden'" 
+                              class="item m-3 d-flex flex-column align-items-center justify-content-center p-3">
                         <img [src]="techIcons[tech]" [alt]="tech" class="w-100 img-fluid">
                         <strong class="m-2">{{tech}}</strong>
                     </ion-card>

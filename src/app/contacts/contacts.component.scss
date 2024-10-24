@@ -1,13 +1,9 @@
-
+@import '/src/assets/animista.scss';
 
 .form-card{
 
-    p-floatLabel{
-        margin: 15px;
-    }
-
     ion-button{
-        margin: 10px;
+        margin: 4%;
     }
 
     ion-card-header{
@@ -22,7 +18,6 @@
     }
 }
 
-
 .particles{
     position: absolute;
     top: 0;
@@ -31,3 +26,29 @@
     height: 100vh;
     z-index: -1;
 }
+
+.hidden{
+    opacity: 0;
+}
+
+.slide{
+    @include slide-top;
+}
+
+
+
+textarea ~ label {
+    transition: all 0.2s ease;
+    position: absolute;
+    top: 10px; /* Initial position of the label */
+    left: 10px; /* Aligns label with the textarea */
+}
+
+textarea:focus ~ label,
+textarea:not(:empty) ~ label, /* Keep label up when content exists */
+textarea.ng-dirty ~ label {   /* Keep label up after user input */
+    transform: translateY(-20px); /* Move the label up */
+    top: -5px; /* Position it above the textarea */
+    opacity: 1; /* Make the label visible */
+}
+

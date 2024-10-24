@@ -1,14 +1,21 @@
 <ion-app class="d-flex flex-column vh-100">
-  <app-header #header class="fixed-top"></app-header>
+  <app-header #headerElement 
+    [selectedPage]="selectedSection" 
+    [isMobile]="isMobile" 
+    (changedSection)="scrollAndChangeUrl($event.sectionName, $event.sectionUrl)" 
+    class="sticky-top">
+  </app-header>
   <ion-content class="flex-grow-1">
-    <router-outlet></router-outlet>
+    
+    <app-home #home id="home" [trigger]="visibilityMap['home']"></app-home>
+    <div class="separator"></div>
+    <app-about #about id="about" [trigger]="visibilityMap['about']" [isMobile]="isMobile"></app-about>
+      <div class="separator"></div>
+    <app-project #project id="project" [trigger]="visibilityMap['project']" [isMobile]="isMobile"></app-project>
+      <div class="separator"></div>
+    <app-contacts #contacts id="contacts" [trigger]="visibilityMap['contacts']"></app-contacts>
+      <div class="separator"></div>
+    <app-footer></app-footer>
+
   </ion-content>
 </ion-app>
-
-<!--
-
-
- ng s --host=192.168.0.20 --disable-host-check                                                                                                                                                  ─╯
-
-
--->

@@ -3,15 +3,15 @@
     <div class="container-fluid">
       <div class="row align-items-center justify-content-between">
         <ion-title class="col-3 col-md-2">
-          <strong>GF</strong>
+          <strong>>_</strong>
         </ion-title>
         
         @if (!isMobile) {
           <div class="col-md-6">
-            <ion-segment [(ngModel)]="selectedPage" (ionChange)="changePageSegment($event)">
+            <ion-segment [(ngModel)]="selectedPage">
               @for (route of routes; track route) {
-                <ion-segment-button [value]="route">
-                  <ion-label>{{route}}</ion-label>
+                <ion-segment-button (click)="scrollToSection(route, ('/'+ route ))"[value]="route">
+                  <ion-label class="text-gradient">{{ 'HEADER.' + route.toUpperCase() | translate }}</ion-label>
                 </ion-segment-button>
               }
             </ion-segment>
@@ -25,14 +25,14 @@
                 
                 @for (route of routes; track route) {
                   <li class="d-flex flex-grow-1">
-                    <ion-card (click)="changePageSidebar(route)" class="d-flex flex-grow-1 align-items-center p-2 justify-content-center">
+                    <ion-card (click)="scrollToSection(route, ('/' + route))" class="d-flex flex-grow-1 align-items-center p-2 justify-content-center">
                       <h6>
-                        <strong>{{route.toUpperCase()}}</strong>
+                        <strong>{{('HEADER.' + route.toUpperCase() | translate).toUpperCase()}}</strong>
                       </h6>
                     </ion-card>
                   </li>
                 }
-
+  
               </ul>
             </p-sidebar>
             <button pButton type="button" icon="pi pi-bars" (click)="toggleSidebar()"></button>
@@ -43,6 +43,7 @@
           <p-dropdown
             [options]="languages"
             [(ngModel)]="selectedLanguage"
+            (ngModelChange)="switchLanguage(selectedLanguage.langCode)"
             optionLabel="code"
             [showClear]="false"
             [filter]="false"
@@ -52,13 +53,13 @@
           >
             <ng-template let-language pTemplate="item">
               <div>
-                <span class="fi" [ngClass]="'fi-' + language.code"></span>
+                <span class="fi" [ngClass]="'fi-' + language.flagCode"></span>
               </div>
             </ng-template>
             <ng-template let-language pTemplate="selectedItem">
               @if (language) {
                 <div>
-                  <span class="fi" [ngClass]="'fi-' + language.code"></span>
+                  <span class="fi" [ngClass]="'fi-' + language.flagCode"></span>
                 </div>
               }
             </ng-template>

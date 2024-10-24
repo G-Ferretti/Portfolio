@@ -4,38 +4,43 @@
     class="particles">
 </ngx-particles>
 
-<div class="container-fluid h-100">
+<div class="contacts container-fluid">
     <div class="row h-100 d-flex align-items-center justify-content-center">
       <div class="form-card col-12 col-sm-8 col-md-4 col-lg-3 col-xl-2 d-flex flex-column align-items-center justify-content-center">
       
       <div class="row col-12">
-        <ion-card-header>
-          <ion-card-title class="h1 text-center"><strong>Let's get in touch</strong></ion-card-title>
+        <ion-card-header [ngClass]="isTitleVisible ? 'slide' : 'hidden'">
+          <ion-card-title class="h1 text-center"><strong>{{'CONTACTS.TITLE' | translate }}</strong></ion-card-title>
         </ion-card-header>
       </div>
   
-      <form [formGroup]="formGroup" class="form d-flex flex-column">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form d-flex flex-column align-items-center justify-content-center">
         
         <div class="row col-12">
-          <p-floatLabel>
+          <p-floatLabel class="my-3"[ngClass]="isFormVisible[0] ? 'slide' : 'hidden'">
             <input class="w-100" pInputText id="email" formControlName="email"/>
-            <label for="email">Email</label>
+            <label for="email">{{'CONTACTS.EMAIL' | translate}}</label>
           </p-floatLabel>
 
-          <p-floatLabel>
+          <p-floatLabel class="my-3" [ngClass]="isFormVisible[1] ? 'slide' : 'hidden'">
             <input class="w-100" pInputText id="subject" formControlName="subject"/>
-            <label for="subject">Subject</label>
+            <label for="subject">{{'CONTACTS.SUBJECT' | translate }}</label>
           </p-floatLabel>
 
-          <p-floatLabel>
-            <textarea class="w-100" pInputTextarea id="content" rows="5" cols="30"  formControlName="content"></textarea>
-            <label for="content">Content</label>
+          <p-floatLabel class="my-3" [ngClass]="isFormVisible[2] ? 'slide' : 'hidden'">
+            <textarea class="w-100" 
+              pInputTextarea 
+              id="content" 
+              rows="5" 
+              cols="30" 
+              formControlName="content"
+              ></textarea>
+            <label for="content">{{'CONTACTS.CONTENT' | translate}}</label>
           </p-floatLabel>
         </div>  
     
-
-        <ion-button class="w-50 align-self-end">
-          Send
+        <ion-button type="submit" [ngClass]="isFormVisible[3] ? 'slide' : 'hidden'" class="w-50 align-self-end">
+          {{'CONTACTS.BUTTON' | translate}}
         </ion-button>
 
         </form>

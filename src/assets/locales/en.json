@@ -1,0 +1,40 @@
+{
+    "HEADER": {
+        "HOME": "Home",
+        "ABOUT": "About",
+        "PROJECT": "Projects",
+        "CONTACTS": "Contacts"
+    },
+    "HOME": {
+        "CURRICULUM": "Download CV"
+    },
+    "ABOUT": {
+        "TITLE": "Howdy!",
+        "PARAGRAPH1": "I'm Gabriele, a passionate computer science undergraduate from Italy",
+        "PARAGRAPH2": "I've always been up for a challenge and that's why I love coding so much!",
+        "PARAGRAPH3": "It keeps me engaged all the while making something that everybody will make use of.",
+        "PARAGRAPH4": "As future full-stack developer, I am dedicated to mastering both front-end and back-end to bring users a fun and pleasant experience"
+    },
+    "PROJECT": {
+        "HEADING": "My list of projects",
+        "HEADING-DESC1": "This is where I'll be showcasing each and every project I'm gonna work from now on.",
+        "HEADING-DESC2": "As time goes by this list is going to grow like an archive of sorts.",
+        "HEADING-DESC3": "Not only that, each is entry is going to be better thant the last.",
+        "HEADING-DESC4": "A testament to my skill as a developer",
+        "CARD": [
+            {
+                "TITLE": "Whatsapp mock (WIP)",
+                "PARAGRAPH1": "The application is not ready at the moment. Once it is finished I will refactor this section.",
+                "PARAGRAPH2": "There will be a row with all the technologies used in the development of the app",
+                "PARAGRAPH3": "and a button to try the app yourself. Pardon our dust"
+                }
+        ]
+    },
+    "CONTACTS":{
+        "TITLE": "Let's get in touch",
+        "EMAIL": "Email",
+        "SUBJECT": "Subject",
+        "CONTENT": "Content",
+        "BUTTON": "Send"
+    }
+}

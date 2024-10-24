@@ -1,42 +1,79 @@
-import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { IonicModule} from '@ionic/angular'
 import { NgParticlesService } from '@tsparticles/angular';
 import { loadSlim } from '@tsparticles/slim';
 import { particlesAbout } from 'src/particles';
 import { NgxParticlesModule } from "@tsparticles/angular";
-import { DeviceService } from '../service/device.service';
+import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss'],
   standalone: true,
-  imports: [IonicModule, NgxParticlesModule]
+  imports: [IonicModule, NgxParticlesModule, CommonModule, TranslateModule]
 })
-export class ProjectComponent implements AfterContentInit{
+export class ProjectComponent implements AfterContentInit, OnChanges{
       
     constructor(
       private readonly ngParticlesService: NgParticlesService,
-      private deviceService: DeviceService) {}
+    ) {}
+
+    @Input() isMobile: boolean = false
+    @Input() trigger: boolean = false
+
+
+    projects: [string, string][] = [
+      [ 
+        'https://picsum.photos/480/270',
+        'View of the main page'
+      ],
+    ]
+
+    isAnimating = false
+    isHeaderVisible = false
+    isParagraphVisible = false
+    isProjectVisible = new Array(1).fill(false)
 
     id= "tsparticles"
     particlesOptions = particlesAbout
-    isMobile = false
 
+    ngOnChanges(changes: SimpleChanges): void {
+      if(changes['trigger']){
+        const isVisible = changes['trigger'].currentValue
+        if(isVisible && !this.isAnimating){
+          this.isAnimating = true
+          this.animate()
+        }
+      }
+    }
+  
     ngAfterContentInit(): void {
         this.ngParticlesService.init(async (engine) => {
             await loadSlim(engine);
         });
-
-        this.deviceService.detectMobile().subscribe(result => {
-          this.isMobile = result.matches
-        })
     }
 
-  projects: [string, string, string][] = [
-    [ 'Whatsapp mock (WIP)',
-      'Lorem ipsum dolor sit amet consectetur adipiscing elit congue cras dictumst, massa diam fames ligula imperdiet maecenas tristique nulla commodo mi, mollis sociis sodales sed nisi tortor montes euismod turpis. Euismod netus magna sed laoreet interdum tristique integer dis ullamcorper, cursus gravida nullam odio dapibus sem aenean. Metus eget suspendisse penatibus dignissim urna cubilia commodo, netus at morbi auctor himenaeos placerat ultricies, in a vivamus proin gravida ridiculus.', 
-      'https://picsum.photos/480/270'
-    ],
-  ]
+    animate(){
+      setTimeout(() => {
+        this.isHeaderVisible = true
+      }, 200)
+
+      setTimeout(() => {
+        this.isParagraphVisible = true
+      },700)
+
+      setTimeout(() => {
+        this.isProjectVisible.forEach((_, index) => {
+          setTimeout(() => {
+            this.isProjectVisible[index] = true
+          },300 * index + 1)
+        })
+      }, 1200)
+
+      this.isAnimating = false
+    }
+
 }

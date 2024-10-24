@@ -4,8 +4,8 @@ app-particles {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100dvw;
-  height: 100dvh;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   z-index: -1;
 }
@@ -47,10 +47,28 @@ ion-button{
     pointer-events: none;
 }
 
-.social-container:hover{
+.social-container:active{
+  @include jello
+}
+
+ion-button:activez{
   @include jello
 }
 
 *{
   box-sizing: border-box;
 }
+
+
+.hidden{
+  opacity: 0;
+}
+
+.slide{
+  @include slide-top;
+}
+
+.vertical{
+  @include vertical-center;
+}
+

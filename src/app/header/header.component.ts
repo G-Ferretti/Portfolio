@@ -1,61 +1,78 @@
 import { CommonModule } from '@angular/common';
-import { AfterContentInit, Component, NgModule,} from '@angular/core';
+import { Component, EventEmitter, Input, Output} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { DropdownModule } from 'primeng/dropdown';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button'; 
-import { DeviceService } from '../service/device.service';
-
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: 'header.component.html',
   styleUrls: ['header.component.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, DropdownModule, FormsModule, SidebarModule, ButtonModule, RouterLink],
+  imports: [IonicModule, CommonModule, DropdownModule, FormsModule, SidebarModule, ButtonModule, TranslateModule],
 })
-export class HeaderComponent implements AfterContentInit{
+export class HeaderComponent{
   constructor(
-    private router: Router, 
-    private deviceService: DeviceService
-  ) {}
+    private translate: TranslateService
+    ) {
+      translate.addLangs(['en', 'es', 'it'])
+      translate.setDefaultLang('en')
+      
+      const browserLang = translate.getBrowserLang()
+      let langEntry: number
+
+      switch(browserLang){
+        case undefined: 
+        case 'en':
+          langEntry = 0
+          break
+        case 'it':
+          langEntry = 1
+          break
+        case 'es':
+          langEntry = 2
+          break
+        default:
+          langEntry = 0 
+      }
+      
+      this.selectedLanguage = this.languages[langEntry]
+      translate.use(this.languages[langEntry].langCode)
+    }
 
   routes: string[] =[
-    'home',
-    'about',
-    'project',
-    'contacts',
+    "home",
+    "about",
+    "project",
+    "contacts",
   ]
 
   languages = [
-    { code: 'gb', name: 'English' },  
-    { code: 'it', name: 'Italiano' }, 
-    { code: 'es', name: 'Español' }, 
+    {flagCode: 'gb', langCode: 'en'},
+    {flagCode: 'it', langCode: 'it'},
+    {flagCode: 'es', langCode: 'es'}
   ]
-  isSidebarToggled = false;
-  isMobile: Boolean = false;
-  selectedLanguage: any = this.languages[0];
-  selectedPage: String = 'home'
 
-  async ngAfterContentInit() {
-    this.deviceService.detectMobile().subscribe(result => {
-      this.isMobile = result.matches
-    })
+  isSidebarToggled = false;
+  selectedLanguage: {flagCode: string, langCode: string}
+  
+  @Output() changedSection = new EventEmitter<{sectionUrl: string, sectionName: string}>
+  @Input() isMobile!: boolean
+  @Input() selectedPage!: String
+
+  scrollToSection(sectionName: string, sectionUrl: string){
+    this.changedSection.emit({sectionUrl, sectionName})
+    this.selectedPage = sectionName
   }
 
   toggleSidebar(){
     this.isSidebarToggled = !this.isSidebarToggled
   }
 
-  changePageSidebar(route: string){
-    this.router.navigate([route])
+  switchLanguage(language: string){
+    this.translate.use(language)
   }
-
-  changePageSegment(event: CustomEvent): void{
-    const page = event.detail.value
-    this.router.navigate([page])
-  }
-
 }

@@ -1,12 +1,8 @@
 @import 'src/theme/variables.scss';
+@import 'src/assets/animista.scss';
 
 #main-heading{
     @include text-gradient;
-
-    strong{
-        border-bottom: 5px solid;
-        border-image: linear-gradient(to right, red, purple)1;
-    }
 }
 
 #heading-desc{
@@ -16,12 +12,12 @@
 .list{
 
     > :nth-child(even){
-        
+
         display: flex;
         flex-direction: row;
     }
 
-    > :nth-child(odd){
+    > :nth-child(odd) {
         display: flex;
         flex-direction: row-reverse;
     }
@@ -29,11 +25,6 @@
 }
 
 .content{
-
-    ion-card-content{
-        border-bottom: 5px solid;
-        border-image: linear-gradient(to right, red, purple) 1;
-    }
 
     ion-card-header{
         @include text-gradient;
@@ -57,4 +48,16 @@ ion-img::part(image){
     
         border-radius: 2%;
     
+}
+
+.hidden{
+    opacity: 0;
+}
+
+.slide{
+    @include slide-top
+}
+
+.vertical{
+    @include vertical-center
 }

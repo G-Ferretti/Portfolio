@@ -3,19 +3,20 @@
   [options]="particlesOptions"
   class="particles">
 </ngx-particles>
-<div class="container-fluid d-flex flex-column align-items-center justify-content-center">
+<div class="project container-fluid max-h-100 d-flex flex-column align-items-center justify-content-center">
   
   <div class="d-flex my-5 align-items-center">  
     <div class="row d-flex align-items-center justify-content-center">
-      <ion-card-header class="col-12 col-sm-8 col-md-6 col-lg-4">
-        <ion-card-title id="main-heading" class="h2 text-center"><strong>MY EVER-GROWING LIST OF PROJECTS</strong></ion-card-title>
+      <ion-card-header [ngClass]="isHeaderVisible ? 'slide' : 'hidden'" class="col-12 col-sm-8 col-md-6 col-lg-4">
+        <ion-card-title id="main-heading" class="h2 text-center"><strong>{{'PROJECT.HEADING' | translate}}</strong></ion-card-title>
       </ion-card-header>
       <div>
-        <div class="row d-flex align-items-center justify-content-center">
+        <div [ngClass]="isParagraphVisible ? 'slide' : 'hidden'" class="row d-flex align-items-center justify-content-center">
           <ion-card-content id="heading-desc" class="col-10 col-lg-4 text-center">
-            This section is meant to showcase each and every personal project I'll be working on in the future.
-            Each work being progressively better and better in quality, as I become a skilled dev. As such this section
-            will not only be an archive of my every project but also a testament of my skill and progress as a Full-Stack dev.
+            {{'PROJECT.HEADING-DESC1' | translate}}
+            {{'PROJECT.HEADING-DESC2' | translate}}
+            {{'PROJECT.HEADING-DESC3' | translate}}
+            {{'PROJECT.HEADING-DESC4' | translate}}
           </ion-card-content>
         </div>
       </div>
@@ -25,15 +26,19 @@
   <div class="project-list-section d-flex align-items-center justify-content-center mt-5">
       @if(!isMobile){
         <div class="list row col-12 col-sm-11 col-lg-6">
-          @for(project of projects; track project){
-            <ion-card class="project row">
-              <div class="col-6 content d-flex flex-column align-items-center justify-content-baseline">
-                <ion-card-header>
-                  <ion-card-title>{{project[0]}}</ion-card-title>
+          @for(project of projects; track $index){
+            <ion-card [ngClass]="isProjectVisible[$index] ? 'vertical' : 'hidden'" class="project row">
+              <div class="col-6 content d-flex flex-column align-items-center justify-content-center">
+                <ion-card-header class="text-center">
+                  <ion-card-title>{{'PROJECT.CARD.' + $index + '.TITLE' | translate}}</ion-card-title>
                 </ion-card-header>
-                <ion-card-content>{{project[1]}}</ion-card-content>
+                <ion-card-content class="text-center">
+                  {{'PROJECT.CARD.' + $index + '.PARAGRAPH1' | translate}}
+                  {{'PROJECT.CARD.' + $index + '.PARAGRAPH2' | translate}}
+                  {{'PROJECT.CARD.' + $index + '.PARAGRAPH3' | translate}}
+                </ion-card-content>
               </div>
-              <ion-img [src]="project[2]" class="desktop-image img-fluid col-6 p-4"></ion-img>
+              <ion-img [src]="project[0]" [alt]="project[1]" class="desktop-image img-fluid col-6 p-4"></ion-img>
             </ion-card>
           }
         </div>
@@ -41,7 +46,7 @@
       @else {
         @for(project of projects; track project){
           <div class="row col-10 col-sm-8 d-flex align-items-center justify-content-center">
-            <ion-img class="mobile-image img-responsive" [src]="project[2]"></ion-img>
+            <ion-img class="mobile-image img-responsive" [src]="project[0]" [alt]="projects[1]"></ion-img>
           </div>
         }
       }
