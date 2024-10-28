@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { IonicModule} from '@ionic/angular'
 import { InputTextModule } from 'primeng/inputtext';
 import { FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule} from '@angular/forms';
@@ -29,7 +29,7 @@ import { Subscription } from 'rxjs';
     TranslateModule,
     ]
 })
-export class ContactsComponent implements AfterViewInit, OnChanges{
+export class ContactsComponent implements AfterViewInit, OnChanges, OnDestroy{
 
   constructor(
     private readonly ngParticlesService: NgParticlesService,
@@ -58,6 +58,8 @@ export class ContactsComponent implements AfterViewInit, OnChanges{
   isSubjectValid = true
   isContentValid = true
   sent = false
+
+  mailSub!: Subscription
   
     ngAfterViewInit(): void {
         this.ngParticlesService.init(async (engine) => {
@@ -76,6 +78,10 @@ export class ContactsComponent implements AfterViewInit, OnChanges{
           },4000)
         }
       }
+    }
+
+    ngOnDestroy(): void {
+      this.mailSub.unsubscribe()
     }
 
   animate(){
@@ -109,7 +115,7 @@ export class ContactsComponent implements AfterViewInit, OnChanges{
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
 
-      this.http.post("https://formspree.io/f/xkgngplp",
+      this.mailSub = this.http.post("https://formspree.io/f/xkgngplp",
         { 
           name: email,
           message: content, 

@@ -14,7 +14,7 @@
         "PARAGRAPH1": "I'm Gabriele, a passionate computer science undergraduate from Italy.",
         "PARAGRAPH2": "I've always been up for a challenge and that's why I love coding so much!",
         "PARAGRAPH3": "It keeps me engaged all the while making something that everybody will make use of.",
-        "PARAGRAPH4": "As future full-stack developer, I am dedicated to mastering both front-end and back-end to bring users a fun and pleasant experience",
+        "PARAGRAPH4": "As future full-stack developer, I am dedicated to mastering both front-end and back-end to bring users a fun and pleasant experience.",
         "TECH": "Tech stack"
     },
     "PROJECT": {
@@ -22,7 +22,7 @@
         "HEADING-DESC1": "This is where I'll be showcasing each and every project I'm gonna work from now on.",
         "HEADING-DESC2": "As time goes by this list is going to grow like an archive of sorts.",
         "HEADING-DESC3": "Not only that, each is entry is going to be better thant the last.",
-        "HEADING-DESC4": "A testament to my skill as a developer",
+        "HEADING-DESC4": "A testament to my skill as a developer.",
         "CARD": [
             {
                 "TITLE": "Whatsapp mock (WIP)",

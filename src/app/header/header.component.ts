@@ -43,6 +43,8 @@ export class HeaderComponent{
       translate.use(this.languages[langEntry].langCode)
     }
 
+  logo = '</>'
+
   routes: string[] =[
     "home",
     "about",

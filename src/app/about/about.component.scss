@@ -24,6 +24,8 @@
     .profile-picture{
         clip-path: circle(50% at 50% 50%);
         padding: 0px;
+        aspect-ratio: 1/1;
+        object-fit: cover;
     }
 
     ion-card-header{
