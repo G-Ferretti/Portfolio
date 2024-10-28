@@ -6,14 +6,16 @@
         "CONTACTS": "Contatti"
     },
     "HOME": {
-        "CURRICULUM": "Scarica il CV"
+        "CURRICULUM": "Scarica il CV",
+        "CURRICULUM-FILE": "assets/resume/resume-it.pdf"
     },
     "ABOUT": {
         "TITLE": "Salve!",
         "PARAGRAPH1": "Sono Gabriele, uno studente di informatica dall'Italia.",
         "PARAGRAPH2": "Non mi tiro mai indietro da una sfida ed e' per questo che amo programmare",
         "PARAGRAPH3": "Mi tiene impegnato e allo stesso tempo mi permette di creare qualcosa che tutti potranno sfruttare",
-        "PARAGRAPH4": "Come futuro sviluppatore full-stack, sono determinato a padroneggiare sia il front-end che il back-end per offrire agli utenti un'esperienza piacevole e divertente"
+        "PARAGRAPH4": "Come futuro sviluppatore full-stack, sono determinato a padroneggiare sia il front-end che il back-end per offrire agli utenti un'esperienza piacevole e divertente",
+        "TECH": "Tecnologie"
     },
     "PROJECT": {
         "HEADING": "La lista dei miei progetti",
@@ -35,7 +37,13 @@
         "EMAIL": "Mail",
         "SUBJECT": "Oggetto",
         "CONTENT": "Contenuto",
-        "BUTTON": "Invia"
+        "BUTTON": "Invia",
+        "BUTTON-SENT": "Inviato",
+        "ERROR": {
+            "EMAIL": "Mail non valid",
+            "SUBJECT": "Il soggetto e' vuoto",
+            "CONTENT": "Il contenuto e' vuoto"
+        }
     }
 
 }

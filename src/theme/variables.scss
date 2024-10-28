@@ -1,5 +1,11 @@
+:root{
+        --primary-gradient-color: red;
+        --secondary-gradient-color: purple;
+        --gradient: linear-gradient(to right, var(--primary-gradient-color), var(--secondary-gradient-color));
+}
+
 @mixin text-gradient {
-        background: linear-gradient(to right, red, purple);
+        background: var(--gradient);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;

@@ -6,14 +6,16 @@
         "CONTACTS": "Contacts"
     },
     "HOME": {
-        "CURRICULUM": "Download CV"
+        "CURRICULUM": "Download CV",
+        "CURRICULUM-FILE": "assets/resume/resume-en.pdf"
     },
     "ABOUT": {
         "TITLE": "Howdy!",
-        "PARAGRAPH1": "I'm Gabriele, a passionate computer science undergraduate from Italy",
+        "PARAGRAPH1": "I'm Gabriele, a passionate computer science undergraduate from Italy.",
         "PARAGRAPH2": "I've always been up for a challenge and that's why I love coding so much!",
         "PARAGRAPH3": "It keeps me engaged all the while making something that everybody will make use of.",
-        "PARAGRAPH4": "As future full-stack developer, I am dedicated to mastering both front-end and back-end to bring users a fun and pleasant experience"
+        "PARAGRAPH4": "As future full-stack developer, I am dedicated to mastering both front-end and back-end to bring users a fun and pleasant experience",
+        "TECH": "Tech stack"
     },
     "PROJECT": {
         "HEADING": "My list of projects",
@@ -35,6 +37,12 @@
         "EMAIL": "Email",
         "SUBJECT": "Subject",
         "CONTENT": "Content",
-        "BUTTON": "Send"
+        "BUTTON": "Send",
+        "BUTTON-SENT": "Sent",
+        "ERROR": {
+            "EMAIL": "Invalid email",
+            "SUBJECT": "Subject is empty",
+            "CONTENT": "Content is empty"
+        }
     }
 }

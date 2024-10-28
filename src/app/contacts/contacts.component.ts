@@ -3,12 +3,13 @@ import { IonicModule} from '@ionic/angular'
 import { InputTextModule } from 'primeng/inputtext';
 import { FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule} from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import { particlesAbout } from 'src/particles';
+import { contactParticles} from 'src/assets/particles/particles';
 import { NgParticlesService, NgxParticlesModule } from '@tsparticles/angular';
 import { loadSlim } from '@tsparticles/slim';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 
 
 
@@ -42,14 +43,21 @@ export class ContactsComponent implements AfterViewInit, OnChanges{
   }
 
   @Input() trigger: boolean = false
+
+  mailSubscription!: Subscription
   
   formGroup!: FormGroup
-  id= "tsparticles"
-  particlesOptions = particlesAbout
+  id= "contactParticles"
+  testParticles = contactParticles
 
   isTitleVisible = false
   isFormVisible = new Array(4).fill(false)
   isAnimating = false
+
+  isEmailValid = true
+  isSubjectValid = true
+  isContentValid = true
+  sent = false
   
     ngAfterViewInit(): void {
         this.ngParticlesService.init(async (engine) => {
@@ -62,8 +70,10 @@ export class ContactsComponent implements AfterViewInit, OnChanges{
       if(changes['trigger']){
         const isVisible = changes['trigger'].currentValue
         if (isVisible && !this.isAnimating){
-          this.isAnimating = true
           this.animate()
+          setTimeout(() => {
+            this.isAnimating = true
+          },4000)
         }
       }
     }
@@ -83,6 +93,11 @@ export class ContactsComponent implements AfterViewInit, OnChanges{
 
   }
 
+  checkValidity(controlName: string): boolean {
+    const control = this.formGroup.get(controlName)!;
+    return control && control.valid;
+  }
+
   onSubmit(){
     if(this.formGroup.valid){
       
@@ -90,7 +105,9 @@ export class ContactsComponent implements AfterViewInit, OnChanges{
       const subject = this.formGroup.get('subject')?.value
       const content = this.formGroup.get('content')?.value
 
+      this.sent = true
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
 
       this.http.post("https://formspree.io/f/xkgngplp",
         { 
@@ -99,8 +116,19 @@ export class ContactsComponent implements AfterViewInit, OnChanges{
           subject: subject 
         },
         { headers }).subscribe(()=> {
+          
+          this.isEmailValid = true
+          this.isSubjectValid = true
+          this.isContentValid = true
+    
           this.formGroup.reset()
+          this.sent = false
       })
+    }
+    else{
+      this.isEmailValid = this.checkValidity('email')
+      this.isSubjectValid = this.checkValidity('subject')
+      this.isContentValid = this.checkValidity('content')
     }
   }
 

@@ -1,5 +1,5 @@
 
-@import 'src/assets/animista.scss';
+@import 'src/assets/animations/animista.scss';
 @import 'src/theme/variables.scss';
 
 ::ng-deep .flags{
@@ -25,7 +25,7 @@
     margin: 5%;
 
     a{
-      color: linear-gradient(to right, red, purple);
+      color: var(--gradient);
     }
   }
 
@@ -59,11 +59,7 @@ ion-label{
 ion-card{
   
   h6{
-
-    background: linear-gradient(to right, red, purple);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    @include text-gradient;
     margin: 0;
     white-space: nowrap;
   }

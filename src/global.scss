@@ -35,10 +35,5 @@
         text-decoration: none;
     }
 
-    --ion-toolbar-segment-background-checked: rgba(255, 0, 0, 0.07);
-    --ion-toolbar-segment-indicator-color: linear-gradient(to right, red, purple);
-
-    ion-segment-button:hover {
-    --background: rgba(255, 0, 0, 0.07);
-    }
+    --ion-color-primary: red;
 }

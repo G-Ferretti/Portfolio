@@ -6,14 +6,16 @@
         "CONTACTS": "Contactos"
     },
     "HOME": {
-        "CURRICULUM": "Descargar CV"
+        "CURRICULUM": "Descargar CV",
+        "CURRICULUM-FILE": "assets/resume/resume-es.pdf"
     },
     "ABOUT": {
         "TITLE": "¡Hola!",
         "PARAGRAPH1": "Soy Gabriele, un estudiante apasionado de informática de Italia.",
         "PARAGRAPH2": "Siempre he estado dispuesto a enfrentar desafíos, ¡y por eso me encanta programar tanto!",
         "PARAGRAPH3": "Me mantiene comprometido mientras creo algo que todos podrán usar.",
-        "PARAGRAPH4": "Como futuro desarrollador full-stack, estoy dedicado a dominar tanto el front-end como el back-end para brindar a los usuarios una experiencia divertida y agradable."
+        "PARAGRAPH4": "Como futuro desarrollador full-stack, estoy dedicado a dominar tanto el front-end como el back-end para brindar a los usuarios una experiencia divertida y agradable.",
+        "TECH": "Tecnologías"
     },
     "PROJECT": {
         "HEADING": "Mi lista de proyectos",
@@ -34,6 +36,12 @@
         "EMAIL": "Correo",
         "SUBJECT": "Asunto",
         "CONTENT": "Contenido",
-        "BUTTON": "Envia"
+        "BUTTON": "Envia",
+        "BUTTON-SENT": "Enviado",
+        "ERROR": {
+            "EMAIL": "Correo electrónico no válido",
+            "SUBJECT": "El asunto está vacío",
+            "CONTENT": "El contenido está vacío"
+        }
     }
 }

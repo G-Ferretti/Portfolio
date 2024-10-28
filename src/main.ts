@@ -8,13 +8,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app/app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { importProvidersFrom } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
 
-// Create the TranslateHttpLoader
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/locales/', '.json');
 }
 
-// Bootstrap the application
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
@@ -29,6 +28,9 @@ bootstrapApplication(AppComponent, {
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
         }
+      }),
+      IonicModule.forRoot({
+        mode: 'md'
       })
     )
   ],

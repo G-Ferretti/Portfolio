@@ -1,17 +1,11 @@
-<ngx-particles 
-    [id]="id" 
-    [options]="particlesOptions" 
-    class="particles">
-</ngx-particles>
-
 <div class="about container-fluid">
-    <div class="holder row h-100 d-flex align-items-center justify-content-evenly">
-      
-      <div class="profile portrait col-12 col-md-6 col-lg-8 d-flex align-items-center justify-content-center my-5">
+  <ngx-particles [id]="id" [options]="particlesOptions" class="particles"></ngx-particles>
+    <div class="holder row d-flex align-items-center justify-content-evenly">      
+      <div class="profile portrait col-12 col-md-6 col-lg-8 d-flex align-items-center justify-content-center mb-5">
         <div class="row d-flex align-items-center justify-content-center">
 
             <img [ngClass]="pictureVisibile ? 'vertical' : 'hidden'" 
-                  class="profile-picture col-6 col-lg-4 img-responsive" src="https://picsum.photos/300"/>
+                  class="profile-picture col-6 col-lg-4 img-responsive" src="https://picsum.photos/300" alt="A beatiful picture of me XD"/>
             <div [ngClass]="textVisible ? 'horizontal' : 'hidden'" 
                   class="profile-content col-12 col-lg-5 d-flex flex-column align-items-center align-items-lg-start justify-content-center">        
               <ion-card-header>
@@ -29,15 +23,16 @@
         </div>
       </div>
 
-      <div class="tech col-12 col-md-6 col-lg-4 d-flex flex-column justify-content-center mt-5">
+      <div class="tech col-12 col-md-6 col-lg-4 d-flex flex-column justify-content-center">
         <div class="col-12 d-flex justify-content-center d-sm-none">
-          <h1 class="display-3"><strong id="tech-header">My skills</strong></h1>
+          <h1 class="display-3"><strong id="tech-header">{{'ABOUT.TECH' | translate}}</strong></h1>
         </div>
-          @for(row of techGrid; track $index) {
+        @if(!isMobile){
+          @for(row of desktopGrid; track $index) {
             <div class="row row-cols-3 d-flex align-items-center justify-content-center">
               @for (tech of row; track $index) {
                 <div class="col">
-                    <ion-card [ngClass]="isGridVisible[getFlattenedIndex(techGrid.indexOf(row), row.indexOf(tech))] ? 'jello' : 'hidden'" 
+                    <ion-card [ngClass]="isGridVisible[getFlattenedIndex(desktopGrid.indexOf(row), row.indexOf(tech), desktopGrid)] ? 'jello' : 'hidden'" 
                               class="item m-3 d-flex flex-column align-items-center justify-content-center p-3">
                         <img [src]="techIcons[tech]" [alt]="tech" class="w-100 img-fluid">
                         <strong class="m-2">{{tech}}</strong>
@@ -46,8 +41,18 @@
               }
             </div>
           }
+        } @else {
+          @for(row of mobileGrid; track $index){
+            <div class="row row-cols-4 d-flex align-items-cente justify-content-center my-3">
+              @for (tech of row; track $index){
+                <div class="col" [ngClass]="isGridVisible[getFlattenedIndex(desktopGrid.indexOf(row), row.indexOf(tech), desktopGrid)] ? 'jello' : 'hidden'">
+                  <ion-img [src]="techIcons[tech]" [alt]="tech" class="w-100 img-fluid"></ion-img>
+                </div>
+              }
+            </div>
+          }
+        }
       </div>
       
     </div>
-
 </div>

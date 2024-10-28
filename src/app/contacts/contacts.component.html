@@ -1,11 +1,6 @@
-<ngx-particles 
-    [id]="id" 
-    [options]="particlesOptions" 
-    class="particles">
-</ngx-particles>
-
-<div class="contacts container-fluid">
-    <div class="row h-100 d-flex align-items-center justify-content-center">
+<div class="contacts container-fluid d-flex flex-column">
+  <ngx-particles  [id]="id" [options]="testParticles" class="particles"></ngx-particles>
+    <div class="row h-100 d-flex align-items-center justify-content-center p-5">
       <div class="form-card col-12 col-sm-8 col-md-4 col-lg-3 col-xl-2 d-flex flex-column align-items-center justify-content-center">
       
       <div class="row col-12">
@@ -19,12 +14,16 @@
         <div class="row col-12">
           <p-floatLabel class="my-3"[ngClass]="isFormVisible[0] ? 'slide' : 'hidden'">
             <input class="w-100" pInputText id="email" formControlName="email"/>
-            <label for="email">{{'CONTACTS.EMAIL' | translate}}</label>
+            <label for="email">
+              {{ isEmailValid ? ('CONTACTS.EMAIL' | translate) : ('CONTACTS.ERROR.EMAIL' | translate)}}
+            </label>
           </p-floatLabel>
 
           <p-floatLabel class="my-3" [ngClass]="isFormVisible[1] ? 'slide' : 'hidden'">
             <input class="w-100" pInputText id="subject" formControlName="subject"/>
-            <label for="subject">{{'CONTACTS.SUBJECT' | translate }}</label>
+            <label for="subject">
+              {{ isSubjectValid ? ('CONTACTS.SUBJECT' | translate) : ('CONTACTS.ERROR.SUBJECT' | translate)}}
+            </label>
           </p-floatLabel>
 
           <p-floatLabel class="my-3" [ngClass]="isFormVisible[2] ? 'slide' : 'hidden'">
@@ -35,14 +34,21 @@
               cols="30" 
               formControlName="content"
               ></textarea>
-            <label for="content">{{'CONTACTS.CONTENT' | translate}}</label>
+            <label for="content">
+              {{ isContentValid ? ('CONTACTS.CONTENT' | translate) : ('CONTACTS.ERROR.CONTENT' | translate)}}
+            </label>
           </p-floatLabel>
         </div>  
     
-        <ion-button type="submit" [ngClass]="isFormVisible[3] ? 'slide' : 'hidden'" class="w-50 align-self-end">
-          {{'CONTACTS.BUTTON' | translate}}
+        <ion-button type="submit"
+          [ngClass]="{
+            'slide': isFormVisible[3] && !isAnimating,
+            'hidden': !isFormVisible[3]
+          }"
+          class="w-50 align-self-end"
+        >
+          {{ sent ? ('CONTACTS.BUTTON-SENT' | translate) : ('CONTACTS.BUTTON' | translate)}}
         </ion-button>
-
         </form>
       </div>
     </div>

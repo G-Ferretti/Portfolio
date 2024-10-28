@@ -1,5 +1,5 @@
 import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import { IonApp, IonContent } from '@ionic/angular/standalone';
+import { Config, IonApp, IonContent } from '@ionic/angular/standalone';
 import { HeaderComponent } from './header/header.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { AboutComponent } from './about/about.component';
@@ -26,8 +26,8 @@ import { FooterComponent } from './footer/footer.component';
 export class AppComponent implements AfterViewInit, AfterViewChecked, OnDestroy{
   constructor(
       private deviceService: DeviceService,
-      private changeDetector: ChangeDetectorRef
-    ){}
+      private changeDetector: ChangeDetectorRef,
+    ){} 
 
     @ViewChild('headerElement', {read: ElementRef}) headerRef!: ElementRef
     
@@ -41,6 +41,10 @@ export class AppComponent implements AfterViewInit, AfterViewChecked, OnDestroy{
     intersectionObserver!: IntersectionObserver
     resizeObserver!: ResizeObserver
     serviceSubscription!: Subscription
+
+    components: string[] = [
+      'home', 'about', 'project', 'contacts'
+    ]
 
     visibilityMap: {[key: string]: boolean} = {
       home: false,
@@ -64,7 +68,7 @@ export class AppComponent implements AfterViewInit, AfterViewChecked, OnDestroy{
         this.visibilityMap[id] = entry.isIntersecting
     
       })
-    }, {threshold: 0.75})
+    }, {threshold: 0.50})
 
     this.resizeObserver = new ResizeObserver(entries => {
       entries.forEach(entry => {

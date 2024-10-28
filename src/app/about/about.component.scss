@@ -1,7 +1,24 @@
-@import '/src/assets/animista.scss';
+@import 'src/assets/animations/animista.scss';
+@import 'src/theme/variables.scss';
+
+.about{
+    position: relative;
+    min-height: 100vh;
+    height: auto;
+}
+
+.particles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
 
 .profile{
     
+
     padding: 10px;
 
     .profile-picture{
@@ -10,10 +27,7 @@
     }
 
     ion-card-header{
-        background: linear-gradient(to right, red, purple) ;
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+        @include text-gradient;
     }
 
     ion-card-title{
@@ -28,32 +42,19 @@
 .tech{
 
     #tech-header{
-        background: linear-gradient(to right, red, purple) ;
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+        @include text-gradient;
     }
 
     ion-card{
 
         border: 5px solid;
-        border-image: linear-gradient(to right,red,purple)1;
+        border-image: var(--gradient)1;
 
         strong{
             font-family: teko;
             font-size: 1.4em;
         }
     }
-}
-
-
-.particles{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -2;
 }
 
 .vertical{
@@ -70,10 +71,4 @@
 
 .hidden{
     opacity: 0;
-}
-
-@media (orientation: portrait){
-    .portrait{
-        height: 100vh;
-    }
 }

@@ -2,7 +2,7 @@ import { AfterContentInit, Component, Input, OnChanges, SimpleChanges } from '@a
 import { IonicModule} from '@ionic/angular'
 import { NgParticlesService } from '@tsparticles/angular';
 import { loadSlim } from '@tsparticles/slim';
-import { particlesAbout } from 'src/particles';
+import { projectParticles } from 'src/assets/particles/particles';
 import { NgxParticlesModule } from "@tsparticles/angular";
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
@@ -27,8 +27,8 @@ export class ProjectComponent implements AfterContentInit, OnChanges{
 
     projects: [string, string][] = [
       [ 
-        'https://picsum.photos/480/270',
-        'View of the main page'
+        'assets/images/WIP.jpg',
+        'Nothing to see here, move on :/'
       ],
     ]
 
@@ -37,8 +37,8 @@ export class ProjectComponent implements AfterContentInit, OnChanges{
     isParagraphVisible = false
     isProjectVisible = new Array(1).fill(false)
 
-    id= "tsparticles"
-    particlesOptions = particlesAbout
+    id= "projectParticles"
+    particlesOptions = projectParticles
 
     ngOnChanges(changes: SimpleChanges): void {
       if(changes['trigger']){

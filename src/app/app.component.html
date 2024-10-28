@@ -7,14 +7,14 @@
   </app-header>
   <ion-content class="flex-grow-1">
     
-    <app-home #home id="home" [trigger]="visibilityMap['home']"></app-home>
+    <app-home #home [id]="components[0]" [trigger]="visibilityMap[components[0]]"></app-home>
     <div class="separator"></div>
-    <app-about #about id="about" [trigger]="visibilityMap['about']" [isMobile]="isMobile"></app-about>
+    <app-about #about [id]="components[1]" [trigger]="visibilityMap[components[1]]" [isMobile]="isMobile"></app-about>
       <div class="separator"></div>
-    <app-project #project id="project" [trigger]="visibilityMap['project']" [isMobile]="isMobile"></app-project>
+    <app-project #project [id]="components[2]" [trigger]="visibilityMap[components[2]]" [isMobile]="isMobile"></app-project>
       <div class="separator"></div>
-    <app-contacts #contacts id="contacts" [trigger]="visibilityMap['contacts']"></app-contacts>
-      <div class="separator"></div>
+      
+    <app-contacts #contacts [id]="components[3]" [trigger]="visibilityMap[components[3]]"></app-contacts>
     <app-footer></app-footer>
 
   </ion-content>

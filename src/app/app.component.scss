@@ -1,11 +1,10 @@
 app-header{
-  z-index: 1000;
+  z-index: 1;
 }
 
 ion-content {
   padding-top: calc(var(--header-height, 0px)) !important;
   --padding-top: calc(var(--header-height, 0px)) !important;
-  --overflow: auto
 }
 
 .separator{

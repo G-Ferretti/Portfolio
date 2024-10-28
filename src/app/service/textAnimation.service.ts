@@ -17,22 +17,20 @@ export class TextAnimationService{
     }
 
     startCyclingAnimation(messages: string[]) {
-        this.stopCyclingAnimation(); // Stop any ongoing animations
+        this.stopCyclingAnimation(); 
 
         this.currentCyclingIndex = 0;
 
         const animateNext = async () => {
             const message = messages[this.currentCyclingIndex];
-            await this.cyclingAnimation(message); // Wait for the current message to animate
+            await this.cyclingAnimation(message); 
 
-            // Update index for the next message
             this.currentCyclingIndex = (this.currentCyclingIndex + 1) % messages.length;
 
-            // Set timeout for the next animation after a delay
             this.cyclingInterval = setTimeout(animateNext, 1000);
         };
 
-        animateNext(); // Start the animation
+        animateNext();
     }
 
     staticAnimation(message: string, index: number) {
@@ -50,8 +48,8 @@ export class TextAnimationService{
     }
 
     async cyclingAnimation(message: string): Promise<void> {
-        await this.cyclingAnimationForward(message, 0); // Animate forward
-        await this.cyclingAnimationReverse(message, message.length); // Animate backward
+        await this.cyclingAnimationForward(message, 0); 
+        await this.cyclingAnimationReverse(message, message.length); 
     }
 
     async cyclingAnimationForward(message: string, index: number): Promise<void> {
@@ -60,12 +58,12 @@ export class TextAnimationService{
 
             if (index < message.length) {
                 setTimeout(() => {
-                    this.cyclingAnimationForward(message, index + 1).then(resolve); // Proper promise chaining
+                    this.cyclingAnimationForward(message, index + 1).then(resolve); 
                 }, 200);
             } else {
                 setTimeout(() => {
-                    this.animatedCyclingMessage.next(message); // Show the full message
-                    resolve(); // Resolve the promise
+                    this.animatedCyclingMessage.next(message); 
+                    resolve(); 
                 }, 500);
             }
         });
@@ -77,12 +75,12 @@ export class TextAnimationService{
 
             if (index > 0) {
                 setTimeout(() => {
-                    this.cyclingAnimationReverse(message, index - 1).then(resolve); // Proper promise chaining
+                    this.cyclingAnimationReverse(message, index - 1).then(resolve); 
                 }, 200);
             } else {
                 setTimeout(() => {
-                    this.animatedCyclingMessage.next(''); // Clear the message
-                    resolve(); // Resolve the promise
+                    this.animatedCyclingMessage.next(''); 
+                    resolve(); 
                 }, 500);
             }
         });
@@ -96,8 +94,8 @@ export class TextAnimationService{
 
     stopCyclingAnimation() {
         if (this.cyclingInterval) {
-            clearTimeout(this.cyclingInterval); // Clear the timeout
-            this.cyclingInterval = null; // Reset the reference
+            clearTimeout(this.cyclingInterval);
+            this.cyclingInterval = null; 
         }
     }
 

@@ -1,11 +1,10 @@
-import { Component, OnInit, AfterViewInit, AfterContentInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, AfterViewInit, Input, OnChanges, SimpleChanges} from '@angular/core';
 import { IonicModule} from '@ionic/angular'
 import { NgParticlesService } from '@tsparticles/angular';
 import { loadSlim } from '@tsparticles/slim';
-import { particlesAbout } from 'src/particles';
+import { aboutParticles} from 'src/assets/particles/particles';
 import { NgxParticlesModule } from "@tsparticles/angular";
 import { CommonModule } from '@angular/common';
-import { AboutAnimations } from 'src/assets/animations/about';
 import { TranslateModule } from '@ngx-translate/core';
 
 
@@ -14,10 +13,9 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
   standalone: true,
-  imports:[IonicModule, NgxParticlesModule, CommonModule, TranslateModule],
-  animations:[AboutAnimations]
+  imports:[IonicModule, NgxParticlesModule, CommonModule, TranslateModule]
 })
-export class AboutComponent implements AfterContentInit, OnChanges{
+export class AboutComponent implements AfterViewInit, OnChanges{
 
     constructor(
       private readonly ngParticlesService: NgParticlesService) {}
@@ -25,8 +23,8 @@ export class AboutComponent implements AfterContentInit, OnChanges{
     @Input() isMobile = false
     @Input() trigger: boolean = false
 
-    id= "tsparticles"
-    particlesOptions = particlesAbout
+    id= "aboutParticles"
+    particlesOptions = aboutParticles
 
     isAnimating = false;
     
@@ -35,10 +33,15 @@ export class AboutComponent implements AfterContentInit, OnChanges{
     isGridVisible = new Array(7).fill(false)
 
 
-  techGrid: string[][] = [
+  desktopGrid: string[][] = [
     ['Angular','Typescript'],
     ['Spring' ,'Kotlin','Java'],
     ['GraphQL','MySQL']
+  ]
+
+  mobileGrid: string[][] = [
+    ['Angular', 'Typescript', 'Spring'],
+    ['Kotlin', 'Java', 'GraphQL','MySQL']
   ]
 
   techIcons: { [key: string]: string } = {
@@ -51,7 +54,7 @@ export class AboutComponent implements AfterContentInit, OnChanges{
     'MySQL':'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-plain-wordmark.svg'
   }
 
-    ngAfterContentInit(): void {
+    ngAfterViewInit(){
   
         this.ngParticlesService.init(async (engine) => {
             await loadSlim(engine);
@@ -89,12 +92,14 @@ export class AboutComponent implements AfterContentInit, OnChanges{
     this.isAnimating = false
   }
 
-  getFlattenedIndex(rowIndex: number, columnIndex: number){
+  getFlattenedIndex(rowIndex: number, columnIndex: number, array: string[][]){
     let index = 0 
     for(let i = 0; i < rowIndex; i++){
-      index += this.techGrid[i].length
+      index += array[i].length
     }
-    index++
+
+    index ++
+
     return index
   }
 }

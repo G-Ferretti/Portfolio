@@ -1,10 +1,13 @@
 import { AfterViewInit, Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { ParticlesComponent } from '../particles/particles.component';
+import { loadSlim } from '@tsparticles/slim';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { TextAnimationService } from '../service/textAnimation.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { NgxParticlesModule } from "@tsparticles/angular";
+import { NgParticlesService } from '@tsparticles/angular';
+import { homeParticles, } from 'src/assets/particles/particles';
 
 
 @Component({
@@ -12,15 +15,19 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [ParticlesComponent, IonicModule, CommonModule, TranslateModule],
+  imports: [IonicModule, CommonModule, TranslateModule, NgxParticlesModule],
 })
 
 export class HomePage implements AfterViewInit, OnChanges , OnDestroy{
 
   constructor(
     private translate: TranslateService,
-    private textAnimation: TextAnimationService
+    private textAnimation: TextAnimationService,
+    private readonly ngParticlesService: NgParticlesService
     ){}
+
+  id= "homeParticles"
+  particleOptions = homeParticles
 
   @Input() trigger!: boolean
 
@@ -57,6 +64,10 @@ export class HomePage implements AfterViewInit, OnChanges , OnDestroy{
   ]
 
   ngAfterViewInit(){
+
+    this.ngParticlesService.init(async (engine) => {
+      await loadSlim(engine);  
+    })
     
     this.animateText(this.message, this.cyclingMessages)
     
@@ -73,8 +84,10 @@ export class HomePage implements AfterViewInit, OnChanges , OnDestroy{
     if(changes['trigger']){
       const isVisible = changes['trigger'].currentValue
       if (isVisible && !this.isAnimating){
-        this.isAnimating = true
         this.animateContent()
+        setTimeout(() => {
+          this.isAnimating = true
+        }, 2000)
       }
     }
   }
