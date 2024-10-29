@@ -28,8 +28,17 @@
         object-fit: cover;
     }
 
-    ion-card-header{
+    ion-card-title{
         @include text-gradient;
+    }
+
+    #primary{
+        stop-color: var(--primary-gradient-color);
+        stop-opacity: 1;
+    }
+
+    #secondary{
+        stop-color: var(--secondary-gradient-color);
     }
 
     ion-card-title{

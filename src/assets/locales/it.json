@@ -12,14 +12,14 @@
     "ABOUT": {
         "TITLE": "Salve!",
         "PARAGRAPH1": "Sono Gabriele, uno studente di informatica dall'Italia.",
-        "PARAGRAPH2": "Non mi tiro mai indietro da una sfida ed é per questo che amo programmare",
-        "PARAGRAPH3": "Mi tiene impegnato e allo stesso tempo mi permette di creare qualcosa che tutti potranno sfruttare",
+        "PARAGRAPH2": "Non mi tiro mai indietro da una sfida ed é per questo che amo programmare!",
+        "PARAGRAPH3": "Mi tiene impegnato e allo stesso tempo mi permette di creare qualcosa che tutti potranno sfruttare.",
         "PARAGRAPH4": "Come futuro sviluppatore full-stack, sono determinato a padroneggiare sia il front-end che il back-end per offrire agli utenti un'esperienza piacevole e divertente.",
         "TECH": "Tecnologie"
     },
     "PROJECT": {
         "HEADING": "La lista dei miei progetti",
-        "HEADING-DESC1":"Questa é la sezione dove caricheró ogni singolo progetto su cui lavoreró",
+        "HEADING-DESC1":"Questa é la sezione dove caricheró ogni singolo progetto su cui lavoreró.",
         "HEADING-DESC2":"Con il passare del tempo, questa lista crescerà, come una sorta di archivio.",
         "HEADING-DESC3":"Non solo, progetto sarà migliore del precedente.",
         "HEADING-DESC4":"A riprova del miglioramento come e delle abilitá da sviluppatore.",

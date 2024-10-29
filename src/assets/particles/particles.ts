@@ -62,7 +62,7 @@ export const homeParticles = {
                     default: OutMode.bounce,
                 },
                 random: false,
-                speed: 6,
+                speed: 2,
                 straight: false,
             },
             number: {
