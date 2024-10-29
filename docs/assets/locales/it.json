@@ -1,0 +1,49 @@
+{
+    "HEADER": {
+        "HOME": "Home",
+        "ABOUT": "Chi sono",
+        "PROJECT": "Progetti",
+        "CONTACTS": "Contatti"
+    },
+    "HOME": {
+        "CURRICULUM": "Scarica il CV",
+        "CURRICULUM-FILE": "assets/resume/resume-it.pdf"
+    },
+    "ABOUT": {
+        "TITLE": "Salve!",
+        "PARAGRAPH1": "Sono Gabriele, uno studente di informatica dall'Italia.",
+        "PARAGRAPH2": "Non mi tiro mai indietro da una sfida ed é per questo che amo programmare",
+        "PARAGRAPH3": "Mi tiene impegnato e allo stesso tempo mi permette di creare qualcosa che tutti potranno sfruttare",
+        "PARAGRAPH4": "Come futuro sviluppatore full-stack, sono determinato a padroneggiare sia il front-end che il back-end per offrire agli utenti un'esperienza piacevole e divertente.",
+        "TECH": "Tecnologie"
+    },
+    "PROJECT": {
+        "HEADING": "La lista dei miei progetti",
+        "HEADING-DESC1":"Questa é la sezione dove caricheró ogni singolo progetto su cui lavoreró",
+        "HEADING-DESC2":"Con il passare del tempo, questa lista crescerà, come una sorta di archivio.",
+        "HEADING-DESC3":"Non solo, progetto sarà migliore del precedente.",
+        "HEADING-DESC4":"A riprova del miglioramento come e delle abilitá da sviluppatore.",
+        "CARD": [
+                {
+                "TITLE": "Simulazione di Whatsapp (In lavorazione)",
+                "PARAGRAPH1": "L'applicazione non é pronta in questo momento. Quando lo sará aggiorneró questa sezione",
+                "PARAGRAPH2": "e aggiungeró una riga contenente tutte le tecnologie utilizzate nello sviluppo dell'applicazione",
+                "PARAGRAPH3": "e un bottone che ricondurrá all'app per poterla provare."
+            }
+        ]
+    },
+    "CONTACTS":{
+        "TITLE": "Contattami",
+        "EMAIL": "Mail",
+        "SUBJECT": "Oggetto",
+        "CONTENT": "Contenuto",
+        "BUTTON": "Invia",
+        "BUTTON-SENT": "Inviato",
+        "ERROR": {
+            "EMAIL": "Mail non valid",
+            "SUBJECT": "Il soggetto e' vuoto",
+            "CONTENT": "Il contenuto e' vuoto"
+        }
+    }
+
+}

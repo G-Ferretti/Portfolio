@@ -1,0 +1,47 @@
+{
+    "HEADER": {
+        "HOME": "Inicio",
+        "ABOUT": "Acerca de",
+        "PROJECT": "Proyectos",
+        "CONTACTS": "Contactos"
+    },
+    "HOME": {
+        "CURRICULUM": "Descargar CV",
+        "CURRICULUM-FILE": "assets/resume/resume-es.pdf"
+    },
+    "ABOUT": {
+        "TITLE": "¡Hola!",
+        "PARAGRAPH1": "Soy Gabriele, un estudiante apasionado de informática de Italia.",
+        "PARAGRAPH2": "Siempre he estado dispuesto a enfrentar desafíos, ¡y por eso me encanta programar tanto!",
+        "PARAGRAPH3": "Me mantiene comprometido mientras creo algo que todos podrán usar.",
+        "PARAGRAPH4": "Como futuro desarrollador full-stack, estoy dedicado a dominar tanto el front-end como el back-end para brindar a los usuarios una experiencia divertida y agradable.",
+        "TECH": "Tecnologías"
+    },
+    "PROJECT": {
+        "HEADING": "Mi lista de proyectos",
+        "HEADING-DESC1":"Aquí es donde voy a mostrar cada uno de los proyectos en los que trabajare' de ahora en adelante.",
+        "HEADING-DESC2":"Con el tiempo, esta lista crecerá como una especie de archivo.",
+        "HEADING-DESC3":"No solo eso, cada entrada será mejor que la anterior.",
+        "HEADING-DESC4":"Un testimonio de mis habilidades como desarrollador.",
+        "CARD": [{
+                    "TITLE": "Simulación de Whatsapp (en progreso)",
+                    "PARAGRAPH1": "La aplicación no está lista en este momento. Una vez terminada, reformaré esta sección.",
+                    "PARAGRAPH2": "Habrá una fila con todas las tecnologías utilizadas en el desarrollo de la aplicación",
+                    "PARAGRAPH3": "y un botón para probar la aplicación su mismo. Disculpe los inconvenientes"
+            }
+        ]
+    },
+    "CONTACTS":{
+        "TITLE": "Pongámonos en contacto",
+        "EMAIL": "Correo",
+        "SUBJECT": "Asunto",
+        "CONTENT": "Contenido",
+        "BUTTON": "Envia",
+        "BUTTON-SENT": "Enviado",
+        "ERROR": {
+            "EMAIL": "Correo electrónico no válido",
+            "SUBJECT": "El asunto está vacío",
+            "CONTENT": "El contenido está vacío"
+        }
+    }
+}
