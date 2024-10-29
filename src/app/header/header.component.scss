@@ -33,6 +33,11 @@
 
 }
 
+.img-fluid{
+  min-width: 40px;
+  min-height: auto;
+}
+
 ::ng-deep .p-dropdown-items{
   padding: 0px;
   display: flex;

@@ -58,6 +58,12 @@ export class HeaderComponent{
     {flagCode: 'es', langCode: 'es'}
   ]
 
+  languagesMap: {[key: string]: string} = {
+    'gb': 'assets/flags/gb.svg',
+    'es': 'assets/flags/es.svg',
+    'it': 'assets/flags/it.svg'
+  }
+
   isSidebarToggled = false;
   selectedLanguage: {flagCode: string, langCode: string}
   

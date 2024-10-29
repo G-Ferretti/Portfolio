@@ -53,13 +53,13 @@
           >
             <ng-template let-language pTemplate="item">
               <div>
-                <span class="fi" [ngClass]="'fi-' + language.flagCode"></span>
+                <ion-img [src]="languagesMap[language.flagCode]" [alt]="language.flagCode" class="img-fluid"></ion-img>
               </div>
             </ng-template>
             <ng-template let-language pTemplate="selectedItem">
               @if (language) {
-                <div>
-                  <span class="fi" [ngClass]="'fi-' + language.flagCode"></span>
+                <div class="d-flex justify-content-center align-items-center">
+                  <ion-img [src]="languagesMap[language.flagCode]" [alt]="language.flagCode" class="img-fluid"></ion-img>
                 </div>
               }
             </ng-template>

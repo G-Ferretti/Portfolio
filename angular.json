@@ -19,8 +19,6 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "docs",
-            "baseHref": "/Portfolio/",
-            "deployUrl": "/Portfolio/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -48,6 +46,9 @@
           },
           "configurations": {
             "production": {
+                "optimization": true,
+                "sourceMap": false,
+                "namedChunks": false,
               "budgets": [
                 {
                   "type": "initial",
