@@ -27,7 +27,9 @@ export class AppComponent implements AfterViewInit, AfterViewChecked, OnDestroy{
   constructor(
       private deviceService: DeviceService,
       private changeDetector: ChangeDetectorRef,
-    ){} 
+    ){
+      document.body.classList.toggle('dark', true);
+    } 
 
     @ViewChild('headerElement', {read: ElementRef}) headerRef!: ElementRef
     

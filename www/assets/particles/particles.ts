@@ -59,7 +59,7 @@ export const homeParticles = {
                 direction: MoveDirection.none,
                 enable: true,
                 outModes: {
-                    default: OutMode.bounce,
+                    default: OutMode.out,
                 },
                 random: false,
                 speed: 2,
@@ -72,6 +72,7 @@ export const homeParticles = {
                 },
                 value: 120,
             },
+            limit: 120,
             opacity: {
                 value: 0.5,
             },
@@ -108,8 +109,9 @@ export const aboutParticles = {
       density: {
         enable: true,
         value_area: 800
-      }
+      },
     },
+    limit: 200,
     color: {
       value: ['#d00000', '#ad0052']
     },
@@ -189,6 +191,7 @@ export const projectParticles = {
         value_area: 800
       }
     },
+    limit: 200,
     color: {
       value: ['#d00000', '#800080']
     },
@@ -268,6 +271,7 @@ export const contactParticles = {
         value_area: 800
       }
     },
+    limit: 200,
     color: {
       value: ['#d00000', '#85007b']
     },
@@ -291,7 +295,7 @@ export const contactParticles = {
       random: false,
       straight: false,
       outModes: {
-        default: OutMode.out 
+        default: OutMode.bounce
       }
     }
   },

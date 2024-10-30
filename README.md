@@ -1,3 +1,3 @@
 ## Portfolio
 
-To open the deployed site simply open the following link [link](nothing.com)
+To visit my website simply open this [link](https://gabriele-ferretti.netlify.app/)
