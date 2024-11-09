@@ -1,5 +1,9 @@
 <div class="about container-fluid">
-  <ngx-particles [id]="id" [options]="particlesOptions" class="particles"></ngx-particles>
+  <ngx-particles 
+    #particles [id]="id" 
+    [options]="particlesOptions" 
+    class="particles">
+  </ngx-particles>
     <div class="holder row d-flex align-items-center justify-content-evenly">      
       <div class="profile portrait col-12 col-md-6 col-lg-8 d-flex align-items-center justify-content-center mb-5">
         <div class="row d-flex align-items-center justify-content-center">
@@ -46,7 +50,7 @@
           }
         } @else {
           @for(row of mobileGrid; track $index){
-            <div class="row row-cols-4 d-flex align-items-cente justify-content-center my-3">
+            <div class="row row-cols-4 d-flex justify-content-center my-3">
               @for (tech of row; track $index){
                 <div class="col" [ngClass]="isGridVisible[getFlattenedIndex(desktopGrid.indexOf(row), row.indexOf(tech), desktopGrid)] ? 'jello' : 'hidden'">
                   <ion-img [src]="techIcons[tech]" [alt]="tech" class="w-100 img-fluid"></ion-img>

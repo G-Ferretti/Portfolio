@@ -1,11 +1,12 @@
-import { Component, AfterViewInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, AfterViewInit, Input, OnChanges, SimpleChanges, ViewChild, OnInit} from '@angular/core';
 import { IonicModule} from '@ionic/angular'
-import { NgParticlesService } from '@tsparticles/angular';
+import { NgParticlesService, NgxParticlesComponent } from '@tsparticles/angular';
 import { loadSlim } from '@tsparticles/slim';
 import { aboutParticles} from 'src/assets/particles/particles';
 import { NgxParticlesModule } from "@tsparticles/angular";
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { Container, Engine } from '@tsparticles/engine';
 
 
 @Component({
@@ -22,16 +23,16 @@ export class AboutComponent implements AfterViewInit, OnChanges{
 
     @Input() isMobile = false
     @Input() trigger: boolean = false
-
+  
     id= "aboutParticles"
     particlesOptions = aboutParticles
+    particlesContainer!: Container
 
     isAnimating = false;
     
     pictureVisibile = false;
     textVisible = false;
     isGridVisible = new Array(7).fill(false)
-
 
   desktopGrid: string[][] = [
     ['Angular','Typescript'],
@@ -55,10 +56,10 @@ export class AboutComponent implements AfterViewInit, OnChanges{
   }
 
     ngAfterViewInit(){
-  
-        this.ngParticlesService.init(async (engine) => {
+
+      this.ngParticlesService.init(async (engine) => {
             await loadSlim(engine);
-        });
+        })
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -71,6 +72,7 @@ export class AboutComponent implements AfterViewInit, OnChanges{
         }
       }
     }
+
 
   animate(){
     setTimeout(() => {

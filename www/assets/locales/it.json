@@ -40,9 +40,9 @@
         "BUTTON": "Invia",
         "BUTTON-SENT": "Inviato",
         "ERROR": {
-            "EMAIL": "Mail non valid",
-            "SUBJECT": "Il soggetto e' vuoto",
-            "CONTENT": "Il contenuto e' vuoto"
+            "EMAIL": "Indirizzo invalido",
+            "SUBJECT": "Il soggetto é vuoto",
+            "CONTENT": "Il contenuto é vuoto"
         }
     }
 

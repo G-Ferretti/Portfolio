@@ -8,6 +8,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NgxParticlesModule } from "@tsparticles/angular";
 import { NgParticlesService } from '@tsparticles/angular';
 import { homeParticles, } from 'src/assets/particles/particles';
+import { Engine } from '@tsparticles/engine';
 
 
 @Component({
@@ -66,7 +67,7 @@ export class HomePage implements AfterViewInit, OnChanges , OnDestroy{
   ngAfterViewInit(){
 
     this.ngParticlesService.init(async (engine) => {
-      await loadSlim(engine);  
+      await loadSlim(engine)
     })
     
     this.animateText(this.message, this.cyclingMessages)
