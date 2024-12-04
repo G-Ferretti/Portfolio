@@ -36,7 +36,11 @@ export class ContactsComponent implements AfterViewInit, OnChanges, OnDestroy{
     private http: HttpClient
   ){
     this.formGroup = new FormGroup({
-      email: new FormControl('', [Validators.required,Validators.pattern(/^\w+@[a-zA-Z_]+\.[a-zA-Z]{2,}$/),]),
+      email: new FormControl('', [ 
+          Validators.required, 
+          Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/) 
+        ]
+      ),
       subject: new FormControl('', Validators.required), 
       content: new FormControl('', Validators.required), 
     });
